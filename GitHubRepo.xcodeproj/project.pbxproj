@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D7092702C2FFC6800154FB1 /* HelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D70926F2C2FFC6800154FB1 /* HelperExtension.swift */; };
+		7D7092722C303BB900154FB1 /* ContributorsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7092712C303BB900154FB1 /* ContributorsResponse.swift */; };
+		7D7092742C3041FA00154FB1 /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7092732C3041FA00154FB1 /* RepoDetailsViewModel.swift */; };
 		7D82E5502C2F03E800A47B12 /* GitHubRepoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D82E54F2C2F03E800A47B12 /* GitHubRepoApp.swift */; };
 		7D82E5522C2F03E800A47B12 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D82E5512C2F03E800A47B12 /* HomeView.swift */; };
 		7D82E5542C2F03EA00A47B12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D82E5532C2F03EA00A47B12 /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D70926F2C2FFC6800154FB1 /* HelperExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtension.swift; sourceTree = "<group>"; };
+		7D7092712C303BB900154FB1 /* ContributorsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorsResponse.swift; sourceTree = "<group>"; };
+		7D7092732C3041FA00154FB1 /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
 		7D82E54C2C2F03E800A47B12 /* GitHubRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D82E54F2C2F03E800A47B12 /* GitHubRepoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoApp.swift; sourceTree = "<group>"; };
 		7D82E5512C2F03E800A47B12 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -46,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D70926E2C2FFC1E00154FB1 /* HelperExtension */ = {
+			isa = PBXGroup;
+			children = (
+				7D70926F2C2FFC6800154FB1 /* HelperExtension.swift */,
+			);
+			path = HelperExtension;
+			sourceTree = "<group>";
+		};
 		7D82E5432C2F03E800A47B12 = {
 			isa = PBXGroup;
 			children = (
@@ -88,9 +102,10 @@
 		7D82E55D2C2F04C000A47B12 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				7D82E5662C2F164F00A47B12 /* DataModel */,
+				7D70926E2C2FFC1E00154FB1 /* HelperExtension */,
 				7D82E55E2C2F050E00A47B12 /* RepositoryEntity.xcdatamodeld */,
 				7D82E56B2C2F16DB00A47B12 /* CoreDataManager.swift */,
-				7D82E5662C2F164F00A47B12 /* DataModel */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -108,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				7D82E5692C2F16A500A47B12 /* RepositoryViewModel.swift */,
+				7D7092732C3041FA00154FB1 /* RepoDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -124,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				7D82E5672C2F167400A47B12 /* SearchResponse.swift */,
+				7D7092712C303BB900154FB1 /* ContributorsResponse.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -199,8 +216,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D82E5652C2F162700A47B12 /* NetworkManager.swift in Sources */,
+				7D7092742C3041FA00154FB1 /* RepoDetailsViewModel.swift in Sources */,
 				7D82E5682C2F167400A47B12 /* SearchResponse.swift in Sources */,
 				7D82E56A2C2F16A500A47B12 /* RepositoryViewModel.swift in Sources */,
+				7D7092722C303BB900154FB1 /* ContributorsResponse.swift in Sources */,
+				7D7092702C2FFC6800154FB1 /* HelperExtension.swift in Sources */,
 				7D82E5602C2F050E00A47B12 /* RepositoryEntity.xcdatamodeld in Sources */,
 				7D82E5522C2F03E800A47B12 /* HomeView.swift in Sources */,
 				7D82E56C2C2F16DB00A47B12 /* CoreDataManager.swift in Sources */,

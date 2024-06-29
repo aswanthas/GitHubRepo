@@ -13,8 +13,8 @@ class NetworkManager {
     
     private init() {}
     
-    func searchRepositories(query: String, page: Int) -> AnyPublisher<[Repository], Error> {
-        guard let url = URL(string: "https://api.github.com/search/repositories?q=\(query)&per_page=10&page=\(page)") else {
+    func fetchData<T: Decodable>(api: GitHubAPI) -> AnyPublisher<T, Error> {
+        guard let url = URL(string: api.description) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         print("URLRequest: \(url)")
@@ -25,8 +25,26 @@ class NetworkManager {
                     print("Raw JSON response: \(jsonString)")
                 }
             })
-            .decode(type: SearchResponse.self, decoder: JSONDecoder())
-            .map { $0.items }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
+
+public enum GitHubAPI {
+    case searchRepositories(query: String, page: Int)
+    case getContributors(username: String)
+    // Add more cases as needed
+}
+
+extension GitHubAPI: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .searchRepositories(let query, let page):
+            return "https://api.github.com/search/repositories?q=\(query)&per_page=10&page=\(page)"
+        case .getContributors(let url):
+            return url
+        }
+    }
+}
+

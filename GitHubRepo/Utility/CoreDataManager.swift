@@ -32,13 +32,14 @@ class CoreDataManager {
             repoEntity.ownerAvatarUrl = repository.owner.avatarUrl
             repoEntity.htmlUrl = repository.htmlUrl
             repoEntity.repositoryDescription = repository.description
-            repoEntity.owner = UserWrapper(user: repository.owner) // This will use the UserTransformer to encode the User struct
+            repoEntity.contributorsUrl = repository.contributorsUrl
+            repoEntity.owner = UserWrapper(user: repository.owner)
         }
         
         do {
             try context.save()
         } catch {
-            print("Error saving repositories: \(error)")
+            debugPrint("Error saving repositories: \(error)")
         }
     }
     
@@ -53,12 +54,11 @@ class CoreDataManager {
             for entity in repoEntities {
                 // Attempt to unwrap the owner from UserWrapper
                 guard let ownerWrapper = entity.owner as? UserWrapper else {
-                    print("Failed to decode owner for repository \(entity.name ?? "")")
-                    continue // Skip this repository and proceed to the next
+                    debugPrint("Failed to decode owner for repository \(entity.name ?? "")")
+                    continue
                 }
                 let owner = ownerWrapper.user
                 
-                // Create a Repository object and add it to the array
                 let repository = Repository(
                     id: Int(entity.id),
                     name: entity.name ?? "",
@@ -78,8 +78,21 @@ class CoreDataManager {
             
             return repositories
         } catch {
-            print("Error fetching saved repositories: \(error)")
+            debugPrint("Error fetching saved repositories: \(error)")
             return [] // Return an empty array in case of any errors
         }
     }
+    // New method to delete all repositories
+        func deleteAllRepositories() {
+            let context = persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = RepositoryEntity.fetchRequest()
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save() // Save context to reflect changes
+            } catch {
+                debugPrint("Error deleting all repositories: \(error)")
+            }
+        }
 }

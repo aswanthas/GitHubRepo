@@ -17,6 +17,7 @@ struct RepositoryRowView: View {
             Text(repository.description ?? "No description available")
                 .font(.subheadline)
                 .foregroundColor(.gray)
+                .lineLimit(3)
         }
         .padding()
     }
